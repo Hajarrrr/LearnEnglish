@@ -1,0 +1,78 @@
+{% extends "blog/home.html" %}
+{% include 'message.html' %}
+{% load random_image %}
+{% load CorespondingWord %}
+{% load static %}
+
+{% block content %}
+
+    <div class="media-body" id="parent" >  
+        <div class="media-body" id="parent">    
+            {% for noun in nouns|slice:":1" %}
+                {% with rand_m=noun.random_item %}
+                        <br><br><br><br><br>
+                        <p>Click on the picture to hear, then write the right word :</p>
+                        <!-- msgs -->
+                        <div id="testT"  style="display:none" class="alert alert-success alert-dismissible">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>TRUE!</strong> 
+                        </div>
+
+                        <div id="testF"  style="display:none" class="alert alert-danger">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>FALSE!</strong> Try again.
+                        </div>
+
+                        <!-- test page -->
+                        <img class="listImg gallerycard" id="MyImage" onClick="TextToSpeech('{{rand_m.eng}}')" alt="MyImage" src="{{ rand_m.photo_url }}"  >
+                        <form name="myForm" method="post" required>
+                            <label for="fname">Write the word:</label><br>
+                            <input type="text" id="fname" name="fname" ><br>
+                        </form>
+                        <br>
+                        <div><button class="btn" id="enterButton" onClick="validateForm('{{rand_m.eng}}')">Check!</button>
+                        <button class="btn" onClick="window.location.reload();">Next</button></div>
+                        
+                {% endwith %}      
+            {% endfor %}
+
+        </dir>   
+    </dir> 
+   
+
+    
+    <script>
+        function DisplayPopTrue() {
+            var T = document.getElementById("testT");
+            T.style.display = "block"; 
+        };
+        function DisplayPopFalse() {
+            var T = document.getElementById("testF");
+            T.style.display = "block"; 
+        };
+
+
+        function TextToSpeech(text){
+            
+            var msg = new SpeechSynthesisUtterance(text);
+            window.speechSynthesis.speak(msg);
+        }
+
+        function validateForm(text) {
+            var x = document.forms["myForm"]["fname"].value;
+            if (x == text) {
+                console.log("hhhh");
+                //alert("TRUE");
+                return DisplayPopTrue()
+            }
+            else{
+                console.log("hdsj");
+                //alert("FALSE, Try again!");
+                return DisplayPopFalse()
+            }
+        }
+
+    
+    </script>
+    
+{% endblock content %} 

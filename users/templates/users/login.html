@@ -1,0 +1,54 @@
+{% extends "blog/home.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class=" hh content-section media-body canter col-lg-8" >
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Log In</legend>
+                 <!--
+                {% csrf_token %} 
+                {{ form|crispy }} 
+                -->  
+                {{ form|crispy }} 
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                    </div>
+
+                    <input type="text" name="username" placeholder="Email or username..." class="form-control">
+                </div>
+
+                <div class="input-group mb-2">
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fas fa-key"></i></span>
+                    </div>
+ 
+                        <input type="password" name="password" placeholder="Password..." class="form-control" >
+                </div>
+
+                <div class="d-flex justify-content-center mt-3 login_container">
+                         <input class="btn login_btn" type="submit" value="Login">
+                </div>
+              
+            </fieldset>
+            <!--
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Login</button>
+            </div>
+            --> 
+        
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Need An Account? <a class="ml-2" href="{% url 'register' %}">Sign Up Now</a>
+            </small>
+        </div>
+         
+    </div>
+    <style>
+        .hh {
+            padding-top : 10%
+        }
+    </style>
+{% endblock content %}

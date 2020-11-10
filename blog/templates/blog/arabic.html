@@ -1,0 +1,165 @@
+{% extends "blog/home.html" %}
+{% load static %}
+{% load arabic %}
+{% block content %}
+
+<div id='bodybox'>
+    <div id='chatborder'>
+      <p id="chatlog7" class="chatlog" style="float:left"> Hey friend &nbsp;</p>
+      <br>
+      <p id="chatlog6" class="chatlog" style="float:right">&nbsp;</p>
+      <br>
+      <p id="chatlog5" class="chatlog" style="float:left; visibility: hidden; ">How are you? &nbsp;</p>
+      <br>
+      <p id="chatlog4" class="chatlog" style="float:right">&nbsp;</p>
+      <br>
+      <p id="chatlog3" class="chatlog" style="float:left">&nbsp;</p>
+      <br>   
+      <p id="chatlog2" class="chatlog" style="float:right">&nbsp;</p>
+      <br> 
+      <p id="chatlog1" class="chatlog" style="float:left">&nbsp;</p>
+      <br><br><br><br><br><br><br><br><br><br><br>
+      
+      
+      <script>
+        //write the text of id1 in id2 space
+        function test(id1,id2) { 
+            var x = document.getElementById(id1).value;
+            document.getElementById(id2).innerHTML = x;
+        }
+        function TextToSpeech(text){       
+            var msg = new SpeechSynthesisUtterance(text);
+            window.speechSynthesis.speak(msg);
+        }
+        function hide (elements) { 
+            elements.style.visibility = 'hidden';          
+        } 
+        function show (elements) { 
+            elements.style.visibility = 'visible';          
+        } 
+      </script> 
+         
+      <div id="BlockHi"> 
+        <button id="Hey" value="Hey!" onclick="test('Hey','chatlog6'),TextToSpeech('Hey'),  hide(document.getElementById('BlockHi')), show(document.getElementById('chatlog5')), show(document.getElementById('BlockFine'))" class="btn">Hey!</button> 
+        <button id="Hello" value="Hello!" onclick="test('Hello','chatlog6'),TextToSpeech('Hello'),hide(document.getElementById('BlockHi')) , show(document.getElementById('chatlog5')), show(document.getElementById('BlockFine'))" class="btn">Hello!</button>
+        <button id="Hi" value="Hi!" onclick="test('Hi','chatlog6'),TextToSpeech('Hi'),hide(document.getElementById('BlockHi')) , show(document.getElementById('chatlog5')), show(document.getElementById('BlockFine'))" class="btn">Hi!</button>
+      </div>
+      <div id="BlockFine" style=" visibility: hidden; "> 
+        <button id="I'm doing great" value="I'm doing great" onclick="test('I\'m doing great','chatlog4'),TextToSpeech('I\'m doing great'), hide(document.getElementById('BlockFine'))" class="btn">I'm doing great</button> 
+        <button id="I'm pretty good" value="I'm pretty good" onclick="test('I\'m pretty good','chatlog4'),TextToSpeech('I\'m pretty good'),hide(document.getElementById('BlockFine'))" class="btn">I'm pretty good</button>
+        <button id="Never better" value="Never better" onclick="test('Never better','chatlog4'),TextToSpeech('Never better'),hide(document.getElementById('BlockFine'))" class="btn">Never better!</button>
+      </div>
+      
+      
+      
+   
+      
+    </div>
+   
+    
+    
+    
+    
+    
+    <div style="align-items: center; justify-content: center;">
+        <center><img src="https://image.freepik.com/free-vector/coronavirus-quarantine-concept-cute-student-working-laptop-home-online-learning-children-study-with-computer-prevent-infection-spreading-isolated-white-background-illustration_83111-616.jpg" style="max-width: 500px;"align="middle"></center>
+ 
+    </div>
+     </div>
+        <!--
+            {% for noun in nouns|slice:":1" %}
+                    {% trans noun.eng %}
+                    <h4><a class="img-title" ></a>{{verb.trans}}</h4>   |slice:":1"   
+            {% endfor %}
+            <br>
+            البحرُ واسعٌ ً
+            <br>
+            السماءُ صافية 
+            <br>
+            أحمدٌ سعيد
+            <br>
+            المدرس بارعٌ
+            <br>
+            الجنودُ مستعدون للحرب.
+            <br>
+            المؤمنون مخلصون لربهم.
+            <br>
+            الطبيباتُ ماهراتٌ في معالجة المرضى
+            <br>
+            الأشجارُ مورقةٌ.
+            <br>
+            الفتى سريع .
+            <br>
+            القاضي عادلٌ في حكمه.
+            <br>
+            المحامٍ بارعٌ
+            <br>
+            الصورة رائعة
+            <br>
+            الفنان يعزف
+            <br>
+            الزهرتان تتفتحان
+            <br>
+            العمال يتقنون عملهم
+        -->
+    <style lang="sass">
+        .btn {
+            background-color: #d1ccd8 !important;
+        }
+        body {
+        font: 15px arial, sans-serif;
+        background-color: #d9d9d9;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        }
+
+        #bodybox {
+        margin: auto;
+        max-width: 550px;
+        font: 15px arial, sans-serif;
+        background-color: white;
+        border-style: solid;
+        border-width: 1px;
+        padding-top: 20px;
+        padding-bottom: 25px;
+        padding-right: 25px;
+        padding-left: 25px;
+        box-shadow: 5px 5px 5px grey;
+        border-radius: 15px;
+        }
+
+        #chatborder {
+        border-style: solid;
+        background-color: #f6f9f6;
+        border-width: 3px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+        padding-top: 10px;
+        padding-bottom: 15px;
+        padding-right: 20px;
+        padding-left: 15px;
+        border-radius: 15px;
+        }
+
+        .chatlog {
+        font: 15px arial, sans-serif;
+        }
+
+        #chatbox {
+        font: 17px arial, sans-serif;
+        height: 22px;
+        width: 100%;
+        }
+
+        h1 {
+        margin: auto;
+        }
+
+        pre {
+        background-color: #f0f0f0;
+        margin-left: 20px;
+        }
+    </style>
+{% endblock content %}

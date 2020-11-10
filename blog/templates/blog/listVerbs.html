@@ -1,0 +1,50 @@
+{% extends "blog/home.html" %}
+{% load static %}
+{% block content %}
+    <!-- test button -->
+    <div class="col-md-10" class="button" >
+      <button id="myButton"  >Take the test</button>
+      <script type="text/javascript">
+          document.getElementById("myButton").onclick = function () {
+              location.href = "tests/";
+          };
+      </script>
+      <style> 
+      #myButton {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            background-color: #8695d2;
+            border: none;
+            color: white;
+            padding: 14px 42px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 19px;
+            margin: 50px 350px;
+            cursor: pointer;
+            width:30%;
+        }
+        
+        #myButton:hover {
+            box-shadow: 0 1px 12px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+        </style>
+    </div>
+    <!-- verbs listn -->
+    
+    {% for verb in verbs %}
+      <!-- verbs listn -->
+        <div class="col-lg-3">
+          <div class="media-body">
+            <img class="listImg" src="{{ verb.get_remote_image }}">  <!--widthimg.get_image {{ verbs.image.url }}  /static/img/{‌{ img }} {{ img.img_photo.url }}-->
+            <h4><a class="img-title" >{{ verb.eng }}</a></h4>
+            <br>
+          </div> 
+        </div>
+      
+    {% endfor %}
+
+
+ 
+{% endblock content %}

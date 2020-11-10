@@ -1,0 +1,65 @@
+{% extends "blog/home.html" %}
+{% load static %}
+{% block content %}
+    <br> <br>
+    <h2>Now you'll be able to test your vocabulary, choose a test and enjoy :</h2>
+    <br> <br>
+
+
+
+    
+    <!-- test1 -->
+    <div class="col-md-10" class="button" >
+      <button id="myButton"  >Dictation</button>
+      <script type="text/javascript">
+          document.getElementById("myButton").onclick = function () {
+              location.href = "testVerbs/";
+          };
+      </script>
+    </div>
+
+    <!-- test2 -->
+    <div class="col-md-10" class="button" >
+        <button id="myButton_1"  >crosswords</button>
+        <script type="text/javascript">
+            document.getElementById("myButton_1").onclick = function () {
+                location.href = "crosswords/";
+            };
+        </script>
+    </div>
+
+
+    <!-- test3 -->
+    <div class="col-md-10" class="button" >
+        <button id="myButton_2"  >choose one</button>
+        <script type="text/javascript">
+            document.getElementById("myButton_2").onclick = function () {
+                location.href = "test/";
+            };
+        </script>
+    </div>
+    
+
+    <style>
+        #myButton , #myButton_1 , #myButton_2 {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            background-color: #8695d2;
+            border: none;
+            color: white;
+            padding: 14px 42px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 19px;
+            margin: 50px 350px;
+            cursor: pointer;
+            width:30%;
+        }
+        
+        #myButton:hover , #myButton_1:hover  , #myButton_2:hover {
+            box-shadow: 0 1px 12px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+    </style>
+ 
+{% endblock content %}

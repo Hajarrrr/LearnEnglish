@@ -1,0 +1,94 @@
+{% extends "blog/home.html" %}
+{% include 'message.html' %}
+{% load random_image %}
+{% load CorespondingWord %}
+{% load static %}
+
+{% block content %}
+
+    <div class="col-lg-12" class="media-body" id="parent" >  
+        <div class="media-body canter " id="parent" >    
+            <br><br><br><br>
+            {% for noun in nouns|slice:":1" %}
+                {% with rand_m=noun.random_item %}
+                               
+                        <!-- msgs -->
+                        <div id="testT"  style="display:none" class="alert alert-success alert-dismissible">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>TRUE!</strong> 
+                        </div>
+
+                        <div id="testF"  style="display:none" class="alert alert-danger">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>FALSE!</strong> Try again.
+                        </div>
+
+
+                        <!-- imgs + word -->
+                        <h4><a class="Img-title" alt="thisOne"> {{ rand_m.eng }}</a></h4>
+                        <br><br>
+                        <img class="listImg gallerycard"  onclick="DisplayPopFalse()" src="/{{ MEDIA_URL}}{% random_image '../media/images/' %}">
+                        <img class="listImg gallerycard"  onclick="DisplayPopFalse()" src="/{{ MEDIA_URL}}{% random_image '../media/images/' %}"alt="">
+                        <img class="listImg gallerycard" id="MyImage"  onclick="DisplayPopTrue()" alt="MyImage" src="{{ rand_m.photo_url }}"  >
+                        <a href='javascript:void(0);' ></a>
+
+
+                        <!-- random Order of Imgs -->
+                        {% block jquery %}
+                            <script src = {% static '../static/blog/js/randImg.js' %}> </script>
+                        {% endblock %}
+                        
+                        <br><br>
+                        <!-- reload page -->
+                        <button class="btn" id="enterButton" onClick=ReloadPage()>NEXT</button>
+                        <button class="btn" onClick="window.location.reload();">SKIP</button></div>
+                        
+                {% endwith %}      
+            {% endfor %}
+    
+        </dir>   
+    </dir> 
+   
+
+    
+    <script>
+    
+        function alt(){
+            var $img = $a.getElementsByTagName("img")[0];
+            console.log($img.alt);
+        }
+        
+        function getSrc(){
+            var value = document.getElementById('2').src;
+            return value
+        }
+         
+        function change(){
+            a=event.target.getAttribute('src')
+            console.log(a);
+        }
+
+        function DisplayPopTrue() {
+            var T = document.getElementById("testT");
+            T.style.display = "block"; 
+        };
+        function DisplayPopFalse() {
+            var T = document.getElementById("testF");
+            T.style.display = "block"; 
+        };
+
+        localStorage.setItem('count', '0');
+        function ReloadPage () {
+        localStorage.setItem('count',  +(localStorage.getItem('count'))+ 1)
+            if (+(localStorage.getItem('count')) < 10) {
+            window.location.reload();
+            }
+            else {
+            document.write ("YYY");
+            }
+        }
+        
+    
+    </script>
+    
+{% endblock content %} 
